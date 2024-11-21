@@ -10,7 +10,7 @@ if (getApps().length === 0) {
     credential: cert({
       projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
       privateKey: process.env.NEXT_PUBLIC_FIREBASE_PRIVATE_KEY, // Handle newline characters
-      clientEmail: process.env.NEXT_PUBLIC_FIREBASE_CLIENT_EMAIL,
+      clientEmail: process.env.NEXT_PUBLIC_FIREBASE_PRIVATE_KEY!.replace(/\\n/g, '\n'),
     }),
   });
 } else {
