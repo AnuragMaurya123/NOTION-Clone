@@ -45,11 +45,7 @@ export default function Editor() {
     const [doc, setDoc] = useState<Y.Doc>();
     const [provider, setProvider] = useState<LiveblocksYjsProvider>();
     const [darkMode, setDarkMode] = useState(false)
-   
-    console.log(doc);
-    console.log(provider);
-    
-
+ 
     const style= `hover:text-white ${darkMode 
         ? "text-gray-300 bg-gray-700 hover:bg-gray-100 hover:text-gray-700"
         :"text-gray-700 bg-gray-200 hover:bg-gray-300 hover:text-gray-700"}`
