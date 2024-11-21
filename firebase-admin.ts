@@ -4,13 +4,13 @@ import { getFirestore } from "firebase-admin/firestore";
 
 
 let app: App;
-
+const privateKey = process.env.FIREBASE_PRIVATE_KEY!.replace(/\\n/g, '\;n')
 if (getApps().length === 0) {
   app = initializeApp({
     credential: cert({
-      projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-      privateKey: process.env.NEXT_PUBLIC_FIREBASE_PRIVATE_KEY, // Handle newline characters
-      clientEmail: process.env.NEXT_PUBLIC_FIREBASE_PRIVATE_KEY!.replace(/\\n/g, '\n'),
+      projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID!,
+      privateKey: process.env.NEXT_PUBLIC_FIREBASE_PRIVATE_KEY!, // Handle newline characters
+      clientEmail: privateKey,
     }),
   });
 } else {
