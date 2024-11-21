@@ -6,12 +6,12 @@ import { getFirestore } from "firebase/firestore"
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAcLnnZylStq8l-SD0VtwLya44t0m3n9YA",
-  authDomain: "notion-clone-youtude.firebaseapp.com",
-  projectId: "notion-clone-youtude",
-  storageBucket: "notion-clone-youtude.firebasestorage.app",
-  messagingSenderId: "739482648779",
-  appId: "1:739482648779:web:665e6529df31dbe4131b4e"
+  apiKey:process.env.FIREBASE_APIKEY,
+  authDomain: process.env.FIREBASE_AUTHDOMAIN,
+  projectId: process.env.FIREBASE_PROJECT,
+  storageBucket: process.env.FIREBASE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_SENDERID,
+  appId: process.env.FIREBASE_APPID
 };
 
 // Initialize Firebase
