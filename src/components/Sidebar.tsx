@@ -85,7 +85,7 @@ if (!data) return;
 <NewDocumentButton/>
    </div>
     {/*My Document */}
-     
+      {user && (
         <div className="flex py-4  flex-col space-y-4  md:max-w-36  ">
         {
               groupedData.owner.length === 0 ?(
@@ -128,7 +128,7 @@ if (!data) return;
              </div>
             )}
          </div>
-    
+      )}
     {/* List */}
     </>
   )
