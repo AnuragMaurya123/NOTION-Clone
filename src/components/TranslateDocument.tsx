@@ -86,6 +86,7 @@ export default function TranslateDocument({ doc }: { doc: Y.Doc }) {
                     })
                 }
             )
+console.log(res);
 
             if (res.ok) {
                const {translated_text}=await res.json()
