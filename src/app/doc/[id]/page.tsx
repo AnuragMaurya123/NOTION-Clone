@@ -18,7 +18,6 @@ export default function DocumentPage({ params }: { params: Promise<{ id: string 
  } else {
   <div className='flex flex-1 flex-col min-h-screen'>
   <h1>Please login First</h1>
- 
 </div>
  }
 }
