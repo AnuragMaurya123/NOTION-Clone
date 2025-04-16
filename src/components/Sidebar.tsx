@@ -16,6 +16,7 @@ import { useUser } from '@clerk/nextjs'
 import { collectionGroup, doc, DocumentData, getFirestore, query, where } from 'firebase/firestore'
 import { db } from '../../firebase'
 import SlidebarOption from './SlidebarOption'
+import LoadingSpinner from './LoadingSpinner'
 
 interface RoomDocument extends DocumentData{
   createdAt:string,
@@ -44,7 +45,6 @@ export default function Sidebar() {
         where("UserId", "==",userEmail ))
     ) 
   );
- 
   useEffect(() => {
 if (!data) return;
 
@@ -133,7 +133,7 @@ if (!data) return;
   )
 
   if (error) return <div className="p-4 mb:p-5 bg-gray-200 relative ">{error.message}</div>
-  if (loading) return 
+  if (loading) return <div className="p-4 mb:p-5 bg-gray-200 relative "><LoadingSpinner/></div>
   return (
     <div className='p-4 mb:p-5 bg-gray-200 relative '>
        <div className="md:hidden flex  items-center justify-center">

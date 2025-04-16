@@ -2,18 +2,11 @@
 
 import { SignedIn, SignedOut, SignInButton, UserButton, useUser } from "@clerk/nextjs"
 import BreadCrumbs from "./BreadCrumbs";
-import { createNewDocument } from "actions/action";
-import { useEffect } from "react";
 
 export default function Header() {
   const {user}=useUser();
   
-  // useEffect(() => {
-  //   if (!user) return;
-  //   (async ()=>{
-  //     await createNewDocument()
-  //   })()  
-  // }, [user])
+
   return (
     <div className="flex justify-between  items-center  p-5 ">
       {
