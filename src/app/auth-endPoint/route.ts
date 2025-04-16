@@ -4,10 +4,11 @@ import { auth } from "@clerk/nextjs/server";
 import liveblocks from "@/lib/liveBLocks";
 import { adminDb } from "../../../firebase-admin";
 export async function POST(request: NextRequest) {
+
   try {
     // Protect the route by ensuring the user is authenticated
   const { sessionClaims } = await auth();
-
+  
   // Ensure sessionClaims exists before proceeding
   if (!sessionClaims) {
     return new NextResponse("Unauthorized", { status: 401 });

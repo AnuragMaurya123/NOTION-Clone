@@ -13,7 +13,7 @@ import {
 import { MenuIcon } from 'lucide-react'
 import { useCollection } from 'react-firebase-hooks/firestore';
 import { useUser } from '@clerk/nextjs'
-import { collectionGroup, DocumentData, query, where } from 'firebase/firestore'
+import { collectionGroup, doc, DocumentData, getFirestore, query, where } from 'firebase/firestore'
 import { db } from '../../firebase'
 import SlidebarOption from './SlidebarOption'
 
@@ -27,14 +27,12 @@ interface RoomDocument extends DocumentData{
 
 
 export default function Sidebar() {
-
   const {user} = useUser()
-
-  
+  const userEmail=user?.emailAddresses[0]?.emailAddress
 
   const [groupedData, setGroupedData] = useState<{
     owner:RoomDocument[]
-      editor:RoomDocument[]
+    editor:RoomDocument[]
   }>({
     owner:[],
     editor:[],
@@ -43,20 +41,20 @@ export default function Sidebar() {
     user && (
       query(
         collectionGroup(db, "rooms"),
-        where("UserId", "==", user.emailAddresses[0].emailAddress))
-    )
+        where("UserId", "==",userEmail ))
+    ) 
   );
-
-    
+ 
   useEffect(() => {
 if (!data) return;
-  
+
     const grouped = data.docs.reduce<{
       owner: RoomDocument[];
       editor: RoomDocument[];
     }>(
       (acc, curr) => {
-        const roomData = curr.data() as RoomDocument; // Extract the data from the document snapshot
+        const roomData = curr.data() as RoomDocument;
+         // Extract the data from the document snapshot
         if (roomData.role === "owner") {
           acc.owner.push({
             id: curr.id, // Add the document ID
@@ -67,7 +65,7 @@ if (!data) return;
             id: curr.id, // Add the document ID
             ...roomData,
           });
-        }
+        } 
         return acc;
       },
       {
@@ -75,9 +73,10 @@ if (!data) return;
         editor: [],
       }
     );
-  
     setGroupedData(grouped);
   }, [data]);
+
+
 
   const menuOption=(
     <>

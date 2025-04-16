@@ -13,13 +13,13 @@ export default function SlidebarOption({href,id}:{
     id:string,
 }) {
 
-    const [data] = useDocumentData(doc(db,"document",id));
+    const [data] = useDocumentData(doc(db,"documents",id));
     
     const pathame=usePathname();
     const isActive=href.includes(pathame) && pathame !== "/";
 
 
-    if (!data) return null; 
+    if (!data) return <div className="">null</div>; 
   return (
     <Link href={href} className={`flex flex-col border rounded-md p-2 ${isActive ? "bg-gray-100 font-bold border-black":"border-gray-400"}`}>
      <p className="truncate"> {data?.title}</p>

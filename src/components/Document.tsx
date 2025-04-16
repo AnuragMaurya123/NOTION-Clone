@@ -16,7 +16,7 @@ export default function Document({ id }: { id: string }) {
 
     const [input, setInput] = useState("")
     const [isUpdating, startUpdating] = useTransition()
-    const [data, loading, error] = useDocumentData(doc(db,"document",id));
+    const [data, loading, error] = useDocumentData(doc(db,"documents",id));
     const isOwner=useOwner()
 
     useEffect(() => {

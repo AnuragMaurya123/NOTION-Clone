@@ -10,8 +10,8 @@ export default  function Layout({ children,params }: {
 }) {
     const {id}=use(params)
     auth.protect()
-  
-    
+   console.log(id);
+   
     return (
         <RoomProvider roomId={id}>
             {children}
